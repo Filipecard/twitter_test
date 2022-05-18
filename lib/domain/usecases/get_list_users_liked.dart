@@ -9,6 +9,8 @@ class GetListUsersLiked {
 
   Future<int> call() async {
     return repository.getListUsersLiked(Tweet(
-        user: User(id: 1, name: "josefino"), id: 1, context: "Tweet teste 1"));
+        user: User(id: 1, name: "josefino"),
+        id: 1,
+        context: "Tweet teste 1")); // alterar
   }
 }
