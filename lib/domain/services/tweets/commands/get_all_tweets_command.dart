@@ -2,12 +2,12 @@ import '../../../entities/tweet.dart';
 import '../../../entities/user.dart';
 import '../../../repositories/tweet_repository.dart';
 
-class Like {
+class GetAllTweetsCommand {
   TweetRepository tweetRepository;
 
-  Like(this.tweetRepository);
+  GetAllTweetsCommand(this.tweetRepository);
 
-  Future<Tweet> call({required Tweet tweet, required User user}) async {
-    return tweetRepository.like(tweet, user);
+  Future<List<Tweet>> call() async {
+    return tweetRepository.getAllTweets();
   }
 }
