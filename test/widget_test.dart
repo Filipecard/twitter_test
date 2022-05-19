@@ -7,24 +7,32 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:twitter_test/domain/entities/tweet.dart';
+import 'package:twitter_test/domain/entities/user.dart';
+import 'package:twitter_test/domain/repositories/tweet_repository.dart';
+import 'package:twitter_test/domain/services/tweets/commands/like_command.dart';
 
 import 'package:twitter_test/main.dart';
 
+class TweetRepo extends Mock implements TweetRepository {}
+
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  final t1 =
+      Tweet(user: User(id: 1, name: "Josue"), id: 1, context: "My first tweet");
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  test('Test like tweet', () {
+    // criar um repo mock
+    final tweetRepo = TweetRepo();
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    when(() => tweetRepo.like(any(), any())).thenReturn(t1);
+    // instanciar o service
+    var likeCommand = Like(tweetRepo);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    final result = likeCommand;
+
+    // expect(result, t1);
+    // expect(result.countLikes, t1.countLikes+1);
+    // asserts
   });
 }
