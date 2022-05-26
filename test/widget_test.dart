@@ -18,8 +18,10 @@ import 'package:twitter_test/main.dart';
 class TweetRepo extends Mock implements TweetRepository {}
 
 void main() {
-  final t1 =
-      Tweet(user: User(id: 1, name: "Josue"), id: 1, context: "My first tweet");
+  final t1 = Tweet(
+      user: User(id: 1, name: "Josue", blockedUsers: []),
+      id: 1,
+      content: "My first tweet");
 
   test('Test like tweet', () {
     // criar um repo mock

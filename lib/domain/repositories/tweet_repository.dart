@@ -7,4 +7,5 @@ abstract class TweetRepository {
   Tweet like(Tweet tweet, User user);
 
   Future<List<Tweet>> getAllTweets();
+  
 }
