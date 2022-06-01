@@ -4,8 +4,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:twitter_test/domain/entities/tweet.dart';
 import 'package:twitter_test/domain/entities/user.dart';
 import 'package:twitter_test/domain/repositories/tweet_repository.dart';
-import 'package:twitter_test/domain/services/tweets/commands/get_all_tweets_command.dart';
-import 'package:twitter_test/domain/services/tweets/commands/like_command.dart';
+import 'package:twitter_test/domain/usecases/get_all_tweets.dart';
 
 import 'package:twitter_test/main.dart';
 
@@ -16,7 +15,7 @@ void main() {
   final tweetRepoMock = TweetRepoMock();
 
   test('Deve trazer uma lista de tweets', () async {
-    var listTweets = await GetAllTweetsCommand(tweetRepoMock).call();
+    var listTweets = await GetAllTweets(tweetRepoMock).call();
 
     final result = listTweets;
     expect(result.length, 2);
