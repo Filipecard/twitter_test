@@ -1,16 +1,15 @@
-import 'package:twitter_test/domain/entities/tweet.dart';
+import 'package:dartz/dartz.dart';
 import 'package:twitter_test/domain/entities/user.dart';
+import '../../core/error/failure.dart';
 
 abstract class UserRepository {
-  List<User> getAllUsers();
+  Future<Either<Failure, List<User>>>? listBlockeds();
 
-  User? getUserById(int id);
+  // Future<List<Tweet>> getAllUserTweetsById(int id);
 
-  Future<List<Tweet>> getAllUserTweetsById(int id);
+  // List<User> getAllUserFollowersById(int id);
 
-  List<User> getAllUserFollowersById(int id);
+  // List<User> getAllUserFollowingsById(int id);
 
-  List<User> getAllUserFollowingsById(int id);
-
-  List<User> getAllUserBlockedById(User user);
+  // List<User> getAllUserBlockedById(User user);
 }
