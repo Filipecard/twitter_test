@@ -17,7 +17,7 @@ void main() {
     User(id: 3, name: 'Ana', blockedUsers: []),
   ];
 
-  test('Deve trazer lista de usuário', () async {
+  test('Deve trazer uma lista de usuário', () async {
     when(mockTweetRepository.listUsersLiked())
         .thenAnswer((_) async => Right(tListUsersLike));
 
